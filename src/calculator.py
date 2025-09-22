@@ -1,65 +1,72 @@
+def _is_number(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+def _require_numbers(*vals):
+    if not all(_is_number(v) for v in vals):
+        raise ValueError("All inputs must be numbers (int or float).")
+
 def fun1(x, y):
     """
-    Adds two numbers together.
-    Args:
-        x (int/float): First number.
-        y (int/float): Second number.
-    Returns:
-        int/float: Sum of x and y.
-        Raises:
-        ValueError: If x or y is not a number.
+    Adds two numbers and returns x + y.
+    Raises ValueError if inputs are not numbers.
     """
-    if not (isinstance(x, (int, float)) and isinstance(y, (int, float))):
-        raise ValueError("Both inputs must be numbers.")
-    
+    _require_numbers(x, y)
     return x + y
 
 def fun2(x, y):
     """
-    Subtracts two numbers.
-    Args:
-        x (int/float): First number.
-        y (int/float): Second number.
-    Returns:
-        int/float: Difference of x and y.
-        Raises:
-        ValueError: If x or y is not a number.
+    Subtracts two numbers and returns x - y.
+    Raises ValueError if inputs are not numbers.
     """
-    if not (isinstance(x, (int, float)) and isinstance(y, (int, float))):
-        raise ValueError("Both inputs must be numbers.")
+    _require_numbers(x, y)
     return x - y
 
 def fun3(x, y):
     """
-    Multiplies two numbers together.
-    Args:
-        x (int/float): First number.
-        y (int/float): Second number.
-    Returns:
-        int/float: Product of x and y.
-        Raises:
-        ValueError: If either x or y is not a number.
+    Multiplies two numbers and returns x * y.
+    Raises ValueError if inputs are not numbers.
     """
-    if not (isinstance(x, (int, float)) and isinstance(y, (int, float))):
-        raise ValueError("Both inputs must be numbers.")
+    _require_numbers(x, y)
     return x * y
 
-def fun4(x,y,z):
+def fun4(x, y, z):
     """
-    Adds three numbers together.
-    Args:
-        x (int/float): First number.
-        y (int/float): Second number.
-        z (int/float): Third number.
-    Returns:
-        int/float: Sum of x, y and z.
+    Returns a metrics dictionary for three numbers:
+    {
+        'sum': x + y + z,
+        'mean': (x + y + z) / 3,
+        'min': min(x, y, z),
+        'max': max(x, y, z),
+        'range': max - min
+    }
+    Raises ValueError if inputs are not numbers.
     """
-    total_sum = x + y + z
-    return total_sum
+    _require_numbers(x, y, z)
+    s = x + y + z
+    mn = min(x, y, z)
+    mx = max(x, y, z)
+    return {
+        "sum": s,
+        "mean": s / 3,
+        "min": mn,
+        "max": mx,
+        "range": mx - mn,
+    }
 
+def safe_divide(x, y):
+    """
+    Returns x / y, raising ZeroDivisionError if y == 0.
+    Raises ValueError if inputs are not numbers.
+    """
+    _require_numbers(x, y)
+    if y == 0:
+        raise ZeroDivisionError("Cannot divide by zero.")
+    return x / y
 
-# f1_op = fun1(2,3)
-# f2_op = fun2(2,3)
-# f3_op = fun3(2,3)
-# f4_op = fun4(f1_op,f2_op,f3_op)
-
+def power(x, y):
+    """
+    Returns x ** y.
+    Raises ValueError if inputs are not numbers.
+    """
+    _require_numbers(x, y)
+    return x ** y
