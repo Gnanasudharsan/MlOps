@@ -5,7 +5,7 @@ The lab demonstrates environment setup, Git/GitHub usage, test automation, and C
 
 ---
 
-## 🔹 Project Overview
+##  Project Overview
 - Set up a **virtual environment** (`.venv`)  
 - Initialized a **GitHub repository** and structured folders (`src/`, `test/`, `data/`, `.github/workflows/`)  
 - Implemented Python code (`converter.py`) with unit tests  
@@ -13,7 +13,7 @@ The lab demonstrates environment setup, Git/GitHub usage, test automation, and C
 
 ---
 
-## 🔹 Modifications (vs original repo)
+##  Modifications (vs original repo)
 To ensure the submission is unique, I made functional changes:
 - Renamed `calculator.py` → **`converter.py`**
 - Replaced arithmetic functions with a **Unit Converter**:
