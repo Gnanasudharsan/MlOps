@@ -36,3 +36,17 @@ To ensure the submission is unique, I made functional changes:
 python -m venv .venv
 source .venv/bin/activate   # Mac/Linux
 .\.venv\Scripts\activate    # Windows
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+### 3. Run tests
+```bash
+pytest -q
+python -m unittest -v test/test_unittest.py
+### 4. Try the converter manually
+```bash
+python -c 'from src.converter import convert; print(convert(60,"mph","kph"))'  # 96.56064
+python -c 'from src.converter import convert; print(convert(0,"C","F"))'      # 32.0
+python -c 'from src.converter import convert; print(convert(1,"mi","km"))'    # 1.609344
+
