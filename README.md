@@ -29,7 +29,7 @@ To ensure the submission is unique, I made functional changes:
 
 ---
 
-## 🔹 How to Run Locally
+##  How to Run Locally
 
 ### 1. Create and activate virtual environment
 ```bash
